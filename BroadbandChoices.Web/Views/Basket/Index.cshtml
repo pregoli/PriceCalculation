@@ -1,0 +1,202 @@
+﻿
+@{
+    
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Calculate final price test</h2>
+
+<h3>Butter</h3>
+<div class="row">
+    <div class="col-lg-1 text-right">
+        <span class="input-group-btn">
+            <button type="button" class="btn btn-danger btn-number js-remove-butter" data-type="minus" data-field="txtButterNumber">
+                <span class="glyphicon glyphicon-minus"></span>
+            </button>
+        </span>
+    </div>
+    <div class="col-lg-2">
+        <input type="text" name="txtButterNumber" class="form-control input-number" value="0" min="1" max="100">
+    </div>
+    <div class="col-lg-1">
+        <span class="input-group-btn">
+            <button type="button" class="btn btn-success btn-number js-add-butter" data-type="plus" data-field="txtButterNumber">
+                <span class="glyphicon glyphicon-plus"></span>
+            </button>
+        </span>
+    </div>
+</div>
+
+<h3>Bread</h3>
+<div class="row">
+    <div class="col-lg-1 text-right">
+        <span class="input-group-btn">
+            <button type="button" class="btn btn-danger btn-number js-remove-bread" data-type="minus" data-field="txtBreadNumber">
+                <span class="glyphicon glyphicon-minus"></span>
+            </button>
+        </span>
+    </div>
+    <div class="col-lg-2">
+        <input type="text" name="txtBreadNumber" class="form-control input-number" value="0" min="0" max="100">
+    </div>
+    <div class="col-lg-1">
+        <span class="input-group-btn">
+            <button type="button" class="btn btn-success btn-number js-add-bread" data-type="plus" data-field="txtBreadNumber">
+                <span class="glyphicon glyphicon-plus"></span>
+            </button>
+        </span>
+    </div>
+</div>
+
+<h3>Milk</h3>
+<div class="row">
+    <div class="col-lg-1 text-right">
+        <span class="input-group-btn">
+            <button type="button" class="btn btn-danger btn-number js-remove-milk" data-type="minus" data-field="txtMilkNumber">
+                <span class="glyphicon glyphicon-minus"></span>
+            </button>
+        </span>
+    </div>
+    <div class="col-lg-2">
+        <input type="text" name="txtMilkNumber" class="form-control input-number" value="0" min="0" max="100">
+    </div>
+    <div class="col-lg-1">
+        <span class="input-group-btn">
+            <button type="button" class="btn btn-success btn-number js-add-milk" data-type="plus" data-field="txtMilkNumber">
+                <span class="glyphicon glyphicon-plus"></span>
+            </button>
+        </span>
+    </div>
+</div>
+
+<br />
+
+<div class="row">
+    <div class="col-lg-4">
+        <span class="input-group-btn">
+            <button type="button" class="btn btn-primary btn-block js-do-order">
+                do order
+                <span class="glyphicon glyphicon-ok"></span>
+            </button>
+        </span>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-4">
+        <span class="input-group-btn">
+            <button type="button" class="btn btn-danger btn-block js-clear-order">
+                clear order
+                <span class="glyphicon glyphicon-remove"></span>
+            </button>
+        </span>
+    </div>
+</div>
+<br />
+
+<h3>Order</h3>
+<p class="js-order-content">
+
+</p>
+
+<div class="js-order-content-div">
+    
+</div>
+
+@section Scripts {
+
+    <script>
+        $(document).ready(function () {
+
+            //BUTTER
+            var butterData = JSON.stringify({
+                butter: {
+                    UnitPrice: 1
+                }
+            });
+
+            $("body").on("click", ".js-add-butter", function (e) {
+                var requestUrl = "/basket/AddButter";
+
+                DoAjaxCall(requestUrl, butterData, "POST");
+            });
+
+            $("body").on("click", ".js-remove-butter", function (e) {
+                var requestUrl = "/basket/RemoveButter";
+
+                DoAjaxCall(requestUrl, butterData, "POST");
+            });
+            //END BUTTER
+
+            //BREAD
+            var breadData = JSON.stringify({
+                bread: {
+                    UnitPrice: 1
+                }
+            });
+
+            $("body").on("click", ".js-add-bread", function (e) {
+                var requestUrl = "/basket/AddBread";
+
+                DoAjaxCall(requestUrl, breadData, "POST");
+            });
+
+            $("body").on("click", ".js-remove-bread", function (e) {
+                var requestUrl = "/basket/RemoveBread";
+
+                DoAjaxCall(requestUrl, breadData, "POST");
+            });
+            //END BREAD
+
+            //MILK
+            $("body").on("click", ".js-add-milk", function (e) {
+                var requestUrl = "/basket/AddMilk";
+
+                DoAjaxCall(requestUrl, breadData, "POST");
+            });
+
+            $("body").on("click", ".js-remove-milk", function (e) {
+                var requestUrl = "/basket/RemoveMilk";
+
+                DoAjaxCall(requestUrl, breadData, "POST");
+            });
+            //END MILK
+
+            $("body").on("click", ".js-do-order", function (e) {
+                var requestUrl = "/basket/CalculateTotalAndGetOffers";
+
+                DoAjaxCall(requestUrl, butterData, "GET")
+            });
+
+            $("body").on("click", ".js-clear-order", function (e) {
+                var requestUrl = "/basket/ClearOrder";
+
+                DoAjaxCall(requestUrl, "", "GET");
+
+                $("input[name='txtButterNumber']").val(0);
+                $("input[name='txtBreadNumber']").val(0);
+                $("input[name='txtMilkNumber']").val(0);
+
+                $('.js-order-content').html('');
+            });
+
+            function DoAjaxCall(requestUrl, data, type)
+            {
+                $.ajax({
+                    type: type,
+                    url: requestUrl,
+                    contentType: "json",
+                    dataType: "json",
+                    data: data,
+                    success: function (result) {
+                        if (result.hasOwnProperty("FinalPrice")) {
+                            $('.js-order-content').html(result.FinalPrice);
+                        }
+                    },
+                    error: function (xhr, ajaxOptions, thrownError) {
+                        alert(thrownError);
+                    }
+                });
+            }
+        });
+    </script>
+}

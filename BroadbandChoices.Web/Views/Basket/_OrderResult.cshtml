@@ -1,0 +1,36 @@
+﻿@model BroadbandChoices.Entities.BasketResult
+
+<div>
+    <h4>BasketResult</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.OriginalPrice)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OriginalPrice)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FinalPrice)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FinalPrice)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SavedAmount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SavedAmount)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
