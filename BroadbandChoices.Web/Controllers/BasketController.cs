@@ -38,7 +38,7 @@ namespace BroadbandChoices.Web.Controllers
                 Basket updatedBasket = null;
                 _basketService.Add(butter, CurrentBasket, out updatedBasket);
                 CurrentBasket = updatedBasket;
-                return new JavaScriptSerializer().Serialize(_basketService);
+                return new JavaScriptSerializer().Serialize(CurrentBasket);
             }
             catch (Exception ex)
             {
@@ -55,7 +55,7 @@ namespace BroadbandChoices.Web.Controllers
                 Basket updatedBasket = null;
                 _basketService.Remove(butter, CurrentBasket, out updatedBasket);
                 CurrentBasket = updatedBasket;
-                return new JavaScriptSerializer().Serialize(_basketService);
+                return new JavaScriptSerializer().Serialize(CurrentBasket);
             }
             catch (Exception ex)
             {
@@ -76,7 +76,7 @@ namespace BroadbandChoices.Web.Controllers
                 Basket updatedBasket = null;
                 _basketService.Add(bread, CurrentBasket, out updatedBasket);
                 CurrentBasket = updatedBasket;
-                return new JavaScriptSerializer().Serialize(_basketService);
+                return new JavaScriptSerializer().Serialize(CurrentBasket);
             }
             catch (Exception ex)
             {
@@ -93,7 +93,7 @@ namespace BroadbandChoices.Web.Controllers
                 Basket updatedBasket = null;
                 _basketService.Remove(bread, CurrentBasket, out updatedBasket);
                 CurrentBasket = updatedBasket;
-                return new JavaScriptSerializer().Serialize(_basketService);
+                return new JavaScriptSerializer().Serialize(CurrentBasket);
             }
             catch (Exception ex)
             {
@@ -143,6 +143,8 @@ namespace BroadbandChoices.Web.Controllers
 
         #endregion
 
+        #region Process and Clear Order methods
+
         public string CalculateTotalAndGetOffers()
         {
             try
@@ -173,6 +175,14 @@ namespace BroadbandChoices.Web.Controllers
             return string.Empty;
         }
 
+        #endregion
+
+
+        /// <summary>
+        /// This is updated every time a service do an operation
+        /// to update the basket
+        /// It is using the session ONLY because it is a test and any Db has been created
+        /// </summary>
         public Basket CurrentBasket { get { return (Basket)Session["basketUpdated"]; } set { Session["basketUpdated"] = value; } }
     }
 }
