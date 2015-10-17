@@ -1,129 +1,161 @@
-﻿
-@{
-    
+﻿@{
+
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Calculate final price test</h2>
-
-<h3>Butter</h3>
-<div class="row">
-    <div class="col-lg-1 text-right">
-        <span class="input-group-btn">
-            <button type="button" class="btn btn-danger btn-number js-remove-butter" data-type="minus" data-field="txtButterNumber">
-                <span class="glyphicon glyphicon-minus"></span>
-            </button>
-        </span>
-    </div>
-    <div class="col-lg-2">
-        <input type="text" name="txtButterNumber" class="form-control input-number" value="0" min="1" max="100">
-    </div>
-    <div class="col-lg-1">
-        <span class="input-group-btn">
-            <button type="button" class="btn btn-success btn-number js-add-butter" data-type="plus" data-field="txtButterNumber">
-                <span class="glyphicon glyphicon-plus"></span>
-            </button>
-        </span>
-    </div>
-</div>
-
-<h3>Bread</h3>
-<div class="row">
-    <div class="col-lg-1 text-right">
-        <span class="input-group-btn">
-            <button type="button" class="btn btn-danger btn-number js-remove-bread" data-type="minus" data-field="txtBreadNumber">
-                <span class="glyphicon glyphicon-minus"></span>
-            </button>
-        </span>
-    </div>
-    <div class="col-lg-2">
-        <input type="text" name="txtBreadNumber" class="form-control input-number" value="0" min="0" max="100">
-    </div>
-    <div class="col-lg-1">
-        <span class="input-group-btn">
-            <button type="button" class="btn btn-success btn-number js-add-bread" data-type="plus" data-field="txtBreadNumber">
-                <span class="glyphicon glyphicon-plus"></span>
-            </button>
-        </span>
-    </div>
-</div>
-
-<h3>Milk</h3>
-<div class="row">
-    <div class="col-lg-1 text-right">
-        <span class="input-group-btn">
-            <button type="button" class="btn btn-danger btn-number js-remove-milk" data-type="minus" data-field="txtMilkNumber">
-                <span class="glyphicon glyphicon-minus"></span>
-            </button>
-        </span>
-    </div>
-    <div class="col-lg-2">
-        <input type="text" name="txtMilkNumber" class="form-control input-number" value="0" min="0" max="100">
-    </div>
-    <div class="col-lg-1">
-        <span class="input-group-btn">
-            <button type="button" class="btn btn-success btn-number js-add-milk" data-type="plus" data-field="txtMilkNumber">
-                <span class="glyphicon glyphicon-plus"></span>
-            </button>
-        </span>
-    </div>
-</div>
-
-<br />
+<h2>Final price calculation test</h2>
 
 <div class="row">
     <div class="col-lg-4">
-        <span class="input-group-btn">
-            <button type="button" class="btn btn-primary btn-block js-do-order">
-                do order
-                <span class="glyphicon glyphicon-ok"></span>
-            </button>
-        </span>
+        <div class=" panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title"><strong>Final price calculation test</strong></h3>
+            </div>
+            <div class="panel-body">
+                <h3>Butter</h3>
+                <div class="row">
+                    <div class="col-lg-2 text-right">
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-danger btn-number js-remove-butter" data-type="minus" data-field="txtButterNumber">
+                                <span class="glyphicon glyphicon-minus"></span>
+                            </button>
+                        </span>
+                    </div>
+                    <div class="col-lg-8">
+                        <input type="text" name="txtButterNumber" class="form-control input-number" value="0" min="0" max="100">
+                    </div>
+                    <div class="col-lg-2  text-left">
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-success btn-number js-add-butter" data-type="plus" data-field="txtButterNumber">
+                                <span class="glyphicon glyphicon-plus"></span>
+                            </button>
+                        </span>
+                    </div>
+                </div>
+
+                <h3>Bread</h3>
+                <div class="row">
+                    <div class="col-lg-2 text-right">
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-danger btn-number js-remove-bread" data-type="minus" data-field="txtBreadNumber">
+                                <span class="glyphicon glyphicon-minus"></span>
+                            </button>
+                        </span>
+                    </div>
+                    <div class="col-lg-8">
+                        <input type="text" name="txtBreadNumber" class="form-control input-number" value="0" min="0" max="100">
+                    </div>
+                    <div class="col-lg-2">
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-success btn-number js-add-bread" data-type="plus" data-field="txtBreadNumber">
+                                <span class="glyphicon glyphicon-plus"></span>
+                            </button>
+                        </span>
+                    </div>
+                </div>
+
+                <h3>Milk</h3>
+                <div class="row">
+                    <div class="col-lg-2 text-right">
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-danger btn-number js-remove-milk" data-type="minus" data-field="txtMilkNumber">
+                                <span class="glyphicon glyphicon-minus"></span>
+                            </button>
+                        </span>
+                    </div>
+                    <div class="col-lg-8">
+                        <input type="text" name="txtMilkNumber" class="form-control input-number" value="0" min="0" max="100">
+                    </div>
+                    <div class="col-lg-2">
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-success btn-number js-add-milk" data-type="plus" data-field="txtMilkNumber">
+                                <span class="glyphicon glyphicon-plus"></span>
+                            </button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-</div>
-<div class="row">
     <div class="col-lg-4">
-        <span class="input-group-btn">
-            <button type="button" class="btn btn-danger btn-block js-clear-order">
-                clear order
-                <span class="glyphicon glyphicon-remove"></span>
-            </button>
-        </span>
+        <div class="row">
+            <div class="col-lg-12">
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-primary btn-block js-do-order">
+                        do order
+                        <span class="glyphicon glyphicon-ok"></span>
+                    </button>
+                </span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-danger btn-block js-clear-order">
+                        clear order
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </button>
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <div class="panel panel-primary js-order-content">
+            <div class="panel-heading">
+                <h3 class="panel-title"><strong>Order</strong></h3>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-lg-9"><strong>Final price</strong>:</div>
+                    <div class="col-lg-3 text-left js-final-price">
+                        <span class="js-final-price">0</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-9"><strong>Original price</strong>:</div>
+                    <div class="col-lg-3 text-left js-original-price">
+                        <span class="js-original-price">0</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-9"><strong>Saved money</strong>:</div>
+                    <div class="col-lg-3 text-left js-saved-money">
+                        <strong><span class="js-saved-money">0</span></strong>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
-<br />
 
-<h3>Order</h3>
-<p class="js-order-content">
-
-</p>
-
-<div class="js-order-content-div">
-    
-</div>
 
 @section Scripts {
 
     <script>
         $(document).ready(function () {
 
+            var addButterEndpoint = "/basket/AddButter";
+            var removeButterEndpoint = "/basket/RemoveButter";
+
+            var addBreadEndpoint = "/basket/AddBread";
+            var removeBreadEndpoint = "/basket/RemoveBread";
+
+            var addMilkEndpoint = "/basket/AddMilk";
+            var removeMilkEndpoint = "/basket/RemoveMilk";
+
             //BUTTER
             var butterData = JSON.stringify({
                 butter: {
-                    UnitPrice: 1
+                    UnitPrice: 0.8
                 }
             });
 
             $("body").on("click", ".js-add-butter", function (e) {
-                var requestUrl = "/basket/AddButter";
-
-                DoAjaxCall(requestUrl, butterData, "POST");
+                DoAjaxCall(addButterEndpoint, butterData, "POST");
             });
 
             $("body").on("click", ".js-remove-butter", function (e) {
-                var requestUrl = "/basket/RemoveButter";
-
-                DoAjaxCall(requestUrl, butterData, "POST");
+                DoAjaxCall(removeButterEndpoint, butterData, "POST");
             });
             //END BUTTER
 
@@ -135,29 +167,26 @@
             });
 
             $("body").on("click", ".js-add-bread", function (e) {
-                var requestUrl = "/basket/AddBread";
-
-                DoAjaxCall(requestUrl, breadData, "POST");
+                DoAjaxCall(addBreadEndpoint, breadData, "POST");
             });
 
             $("body").on("click", ".js-remove-bread", function (e) {
-                var requestUrl = "/basket/RemoveBread";
-
-                DoAjaxCall(requestUrl, breadData, "POST");
+                DoAjaxCall(removeBreadEndpoint, breadData, "POST");
             });
             //END BREAD
 
             //MILK
+            var milkData = JSON.stringify({
+                milk: {
+                    UnitPrice: 1.15
+                }
+            });
             $("body").on("click", ".js-add-milk", function (e) {
-                var requestUrl = "/basket/AddMilk";
-
-                DoAjaxCall(requestUrl, breadData, "POST");
+                DoAjaxCall(addMilkEndpoint, milkData, "POST");
             });
 
             $("body").on("click", ".js-remove-milk", function (e) {
-                var requestUrl = "/basket/RemoveMilk";
-
-                DoAjaxCall(requestUrl, breadData, "POST");
+                DoAjaxCall(removeMilkEndpoint, milkData, "POST");
             });
             //END MILK
 
@@ -176,11 +205,10 @@
                 $("input[name='txtBreadNumber']").val(0);
                 $("input[name='txtMilkNumber']").val(0);
 
-                $('.js-order-content').html('');
+                SetPrices(0, 0, 0);
             });
 
-            function DoAjaxCall(requestUrl, data, type)
-            {
+            function DoAjaxCall(requestUrl, data, type) {
                 $.ajax({
                     type: type,
                     url: requestUrl,
@@ -189,13 +217,20 @@
                     data: data,
                     success: function (result) {
                         if (result.hasOwnProperty("FinalPrice")) {
-                            $('.js-order-content').html(result.FinalPrice);
+                            SetPrices(result.FinalPrice, result.OriginalPrice, result.SavedAmount);
                         }
                     },
                     error: function (xhr, ajaxOptions, thrownError) {
-                        alert(thrownError);
+
                     }
                 });
+            }
+
+            function SetPrices(finalPrice, OriginalPrice, SavedMoney)
+            {
+                $('.js-final-price').html(finalPrice);
+                $('.js-original-price').html(OriginalPrice);
+                $('.js-saved-money').html(SavedMoney);
             }
         });
     </script>

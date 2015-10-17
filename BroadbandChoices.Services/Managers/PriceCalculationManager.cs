@@ -13,6 +13,7 @@ namespace BroadbandChoices.Services.Managers
         public static BasketResult GetBasketResult(Basket basket)
         {
             var basketResult = new BasketResult();
+            basket.Products.ForEach(x => x.FinalPrice = 0.0);
 
             OfferOnButter offerOnButter = null;
             OfferOnMilk offerOnMilk = null;
@@ -20,30 +21,20 @@ namespace BroadbandChoices.Services.Managers
             var products = basket.Products;
             var originalPrice = products.Sum(x => x.UnitPrice);
 
-            var butters = products.Where(x => x.GetType() == typeof(Butter)).ToList();
-            var totalButters = butters.Count;
-
-            var milks = products.Where(x => x.GetType() == typeof(Milk)).ToList();
-            var totalMilks = milks.Count;
-
-            var breads = products.Where(x => x.GetType() == typeof(Bread)).ToList();
-            var totalBreads = breads.Count;
-
-            var minNumberOfButtersToReceiveOffer = OfferManager.MinimumForButtesOffer;
-            var minNumberOfMilksToReceiveOffer = OfferManager.MinimumForMilksOffer;
-
             var numberOfBreadsToCutPrice = 0;
 
             //butters
+            var butters = products.Where(x => x.GetType() == typeof(Butter)).ToList();
+            var totalButters = butters.Count;
             var buttersFinalPrice = butters.Sum(x => x.UnitPrice);
-            if (totalButters >= minNumberOfButtersToReceiveOffer)
+            if (totalButters >= OfferManager.MinimumForButtesOffer)
             {
                 offerOnButter = new OfferOnButter
                 {
                     TotalItems = totalButters
                 };
 
-                numberOfBreadsToCutPrice = totalButters / minNumberOfButtersToReceiveOffer;
+                numberOfBreadsToCutPrice = totalButters / OfferManager.MinimumForButtesOffer;
                 basketResult.Offers.Add(offerOnButter);
             }
 
@@ -51,6 +42,9 @@ namespace BroadbandChoices.Services.Managers
             basketResult.Products.AddRange(butters);
 
             //bread
+            var breads = products.Where(x => x.GetType() == typeof(Bread)).ToList();
+            var totalBreads = breads.Count;
+
             var breadsInitialPrice = breads.Sum(x => x.UnitPrice);
             if (numberOfBreadsToCutPrice > 0)
             {
@@ -66,39 +60,25 @@ namespace BroadbandChoices.Services.Managers
             basketResult.Products.AddRange(breads);
 
             //milks
-            var numberOfMilkForFree = totalMilks / minNumberOfMilksToReceiveOffer;
-            if (totalMilks > minNumberOfMilksToReceiveOffer)
+            var milks = products.Where(x => x.GetType() == typeof(Milk)).ToList();
+            var totalMilks = milks.Count;
+
+            milks.Where(x => x.FinalPrice == 0).ToList().ForEach(x => x.FinalPrice = x.UnitPrice);
+            if (totalMilks > OfferManager.MinimumForMilksOffer)
             {
-                for (int i = 0; i < numberOfMilkForFree; i++)
-                {
-                    basketResult.Products.Add(
-                        new Milk
-                        {
-                            FinalPrice = 0  
-                        }
-                    );
-                }
+                var numberOfMilkForFree = totalMilks / OfferManager.MinimumForMilksOffer;
 
-                offerOnMilk = new OfferOnMilk
-                {
-                    TotalItems = totalMilks
-                };
-
-                basketResult.Offers.Add(offerOnMilk);
+                milks.Take(numberOfMilkForFree).ToList().ForEach(x => x.FinalPrice = 0.0);
+                
+                basketResult.Offers.Add(new OfferOnMilk());
             }
-            else
-                milks.Where(x => x.FinalPrice == 0).ToList().ForEach(x => x.FinalPrice = x.UnitPrice);
 
             basketResult.Products.AddRange(milks);
 
-            //foreach (var product in basketResult.Products)
-            //{
-               
-            //}
 
-            basketResult.FinalPrice = basketResult.Products.Sum(x => x.FinalPrice);
-            basketResult.OriginalPrice = basketResult.Products.Sum(x => x.UnitPrice);
-            basketResult.SavedAmount = basketResult.OriginalPrice - basketResult.FinalPrice;
+            basketResult.FinalPrice = Math.Round(basketResult.Products.Sum(x => x.FinalPrice),2);
+            basketResult.OriginalPrice = Math.Round(basketResult.Products.Sum(x => x.UnitPrice), 2);
+            basketResult.SavedAmount = Math.Round((basketResult.OriginalPrice - basketResult.FinalPrice), 2);
 
             return basketResult;
         }

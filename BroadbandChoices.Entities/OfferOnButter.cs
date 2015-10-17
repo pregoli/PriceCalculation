@@ -16,7 +16,5 @@ namespace BroadbandChoices.Entities
                 return "Congratulations! Based on your purchase you are eligible for our offer 'Buy 2 Butter and get a Bread at 50% off'.";
             }
         }
-
-        public override int TotalItems { get; set; }
     }
 }

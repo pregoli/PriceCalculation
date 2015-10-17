@@ -16,7 +16,5 @@ namespace BroadbandChoices.Entities
                 return "Congratulations! Based on your purchase you are eligible for our offer 'Buy 3 Milk and get the 4th milk for free'.";
             }
         }
-
-        public override int TotalItems { get; set; }
     }
 }
