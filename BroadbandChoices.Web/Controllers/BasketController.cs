@@ -11,6 +11,7 @@ using System.Web.Script.Serialization;
 
 namespace BroadbandChoices.Web.Controllers
 {
+    [HandleError]
     public class BasketController : Controller
     {
         private readonly IBasketService<Product, Basket> _basketService;

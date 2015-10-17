@@ -125,9 +125,10 @@ namespace BroadbandChoices.Services.Managers
                 var numberOfMilkForFree = totalMilks / OfferManager.MinimumForMilksOffer;
 
                 milks.Take(numberOfMilkForFree).ToList().ForEach(x => x.FinalPrice = 0.0);
-
-                basketResult.Offers.Add(new OfferOnMilk());
             }
+
+            if (totalMilks >= OfferManager.MinimumForMilksOffer)
+                basketResult.Offers.Add(new OfferOnMilk());
 
             basketResult.Products.AddRange(milks);
 
