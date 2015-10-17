@@ -13,17 +13,16 @@ namespace BroadbandChoices.Services
     public class BasketService : IBasketService<Product, Basket>
     {
         private readonly ILogger _logger;
-
         public BasketService(ILogger logger)
         {
             _logger = logger;
         }
 
         /// <summary>
-        /// Add a product to the basket
+        /// Add a product to the basket and Get back the updated one
         /// </summary>
-        /// <param name="product"></param>
-        /// <param name="basket"></param>
+        /// <param name="product">product added to the basket</param>
+        /// <param name="basket">Current basket</param>
         public void Add(Product product, Basket basket, out Basket basketUpdated)
         {
             try
@@ -39,10 +38,10 @@ namespace BroadbandChoices.Services
         }
 
         /// <summary>
-        /// Remove a product from the basket
+        /// Remove a product from the basket and Get back the updated one
         /// </summary>
-        /// <param name="product"></param>
-        /// <param name="basket"></param>
+        /// <param name="product">product removed to the basket</param>
+        /// <param name="basket">Current basket</param>
         public void Remove(Product product, Basket basket, out Basket basketUpdated)
         {
             try
@@ -59,9 +58,10 @@ namespace BroadbandChoices.Services
         }
 
         /// <summary>
-        /// Return the basket result with all necessary infos
+        /// Retrieve the final basket result
+        /// Including all products with infos/ compared prices infos/ offers.discounts if available
         /// </summary>
-        /// <param name="basket"></param>
+        /// <param name="basket">Current basket</param>
         /// <returns></returns>
         public BasketResult CalculateTotalPrice(Basket basket)
         {
