@@ -2,9 +2,8 @@
 Test project using Vs2013, C#, MVC5, IoC autofac, jQuery, Bootstrap.
 
 Nuget packs (name - version):
-Autofac - 3.5.2 
-Autofac.Mvc5 - 3.3.4
-NUnit - 2.6.4
+-Autofac - 3.5.2 
+-Autofac.Mvc5 - 3.3.4
 
 - Presentation Layer (.Web proj)
 It containings the views, controllers and resources as js and css.
