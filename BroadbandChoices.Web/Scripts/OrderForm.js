@@ -9,6 +9,8 @@
     var addMilkEndpoint = "/basket/AddMilk";
     var removeMilkEndpoint = "/basket/RemoveMilk";
 
+    ShowOffers(false, null);
+
     //BUTTER
     var butterData = JSON.stringify({
         butter: {
@@ -72,6 +74,7 @@
         $("input[name='txtMilkNumber']").val(0);
 
         SetPrices(0, 0, 0);
+        ShowOffers(false, null);
     });
 
     function DoAjaxCall(requestUrl, data, type) {
@@ -83,13 +86,34 @@
             data: data,
             success: function (result) {
                 if (result.hasOwnProperty("FinalPrice")) {
+
+                    if (result.Offers != undefined) {
+                        ShowOffers(result.Offers.length > 0, result.Offers);
+                    }
+
                     SetPrices(result.FinalPrice, result.OriginalPrice, result.SavedAmount);
                 }
             },
             error: function (xhr, ajaxOptions, thrownError) {
-
+                ShowOffers(false, null);
             }
         });
+    }
+
+    function ShowOffers(show, offers)
+    {
+        if (show) {
+            $(".js-content-offers").show();
+            var offersHtmlContent = "";
+            offers.forEach(function (offer) {
+                offersHtmlContent += "<strong>Well done!</strong> " + offer.Message + "<hr />";
+            });
+
+            $(".js-content-offers").html(offersHtmlContent);
+        }
+        else {
+            $(".js-content-offers").hide();
+        }
     }
 
     function SetPrices(finalPrice, OriginalPrice, SavedMoney) {
