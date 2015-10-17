@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BroadbandChoices.Services",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BroadbandChoices.Infrastructure", "BroadbandChoices.Infrastructure\BroadbandChoices.Infrastructure.csproj", "{7FA4DBD3-E6A9-42E9-A2FA-AB9B5331499D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BroadbandChoices.Tests", "BroadbandChoices.Tests\BroadbandChoices.Tests.csproj", "{895981F4-2521-43B0-B8C8-F1D1CA641AB6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{7FA4DBD3-E6A9-42E9-A2FA-AB9B5331499D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7FA4DBD3-E6A9-42E9-A2FA-AB9B5331499D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7FA4DBD3-E6A9-42E9-A2FA-AB9B5331499D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{895981F4-2521-43B0-B8C8-F1D1CA641AB6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{895981F4-2521-43B0-B8C8-F1D1CA641AB6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{895981F4-2521-43B0-B8C8-F1D1CA641AB6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{895981F4-2521-43B0-B8C8-F1D1CA641AB6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
