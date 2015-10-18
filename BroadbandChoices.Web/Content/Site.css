@@ -22,3 +22,21 @@ select,
 textarea {
     width: 100%;
 }
+
+.box-buttons {
+padding-bottom:20px;
+}
+
+.border-radius-20 {
+ border-radius:20px;
+}
+.padding-left-5 { padding-left:5px!important;}
+.bg-whitesmoke {
+background:whitesmoke!important;
+}
+
+.bg-content {
+    border-top-left-radius:20px;
+    border-top-right-radius:20px;
+    background:rgba(245, 245, 245, 0.68)!important
+}

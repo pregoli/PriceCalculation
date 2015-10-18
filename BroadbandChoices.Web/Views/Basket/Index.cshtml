@@ -3,136 +3,22 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Final price calculation test</h2>
+<h1 class="page-header">Final price calculation test</h1>
 
 <div class="row">
     <!--Container box order form-->
     <div class="col-lg-4 col-md-6 col-sm-12">
-        <div class=" panel panel-primary">
-            <div class="panel-heading">
-                <h3 class="panel-title"><strong>Order your items</strong></h3>
-            </div>
-            <div class="panel-body">
-                <h3>Butter</h3>
-                <div class="row">
-                    <div class="col-lg-2 col-md-2 col-sm-1 col-xs-2">
-                        <span class="input-group-btn">
-                            <button type="button" class="btn btn-danger btn-number js-remove-butter" data-type="minus" data-field="txtButterNumber">
-                                <span class="glyphicon glyphicon-minus"></span>
-                            </button>
-                        </span>
-                    </div>
-                    <div class="col-lg-8 col-md-8 col-sm-10 col-xs-7">
-                        <input type="text" name="txtButterNumber" class="form-control input-number" disabled value="0" min="0" max="100">
-                    </div>
-                    <div class="col-lg-2 col-md-2 col-sm-1 col-xs-2 text-left">
-                        <span class="input-group-btn">
-                            <button type="button" class="btn btn-success btn-number js-add-butter" data-type="plus" data-field="txtButterNumber">
-                                <span class="glyphicon glyphicon-plus"></span>
-                            </button>
-                        </span>
-                    </div>
-                </div>
-
-                <h3>Bread</h3>
-                <div class="row">
-                    <div class="col-lg-2 col-md-2 col-sm-1 col-xs-2">
-                        <span class="input-group-btn">
-                            <button type="button" class="btn btn-danger btn-number js-remove-bread" data-type="minus" data-field="txtBreadNumber">
-                                <span class="glyphicon glyphicon-minus"></span>
-                            </button>
-                        </span>
-                    </div>
-                    <div class="col-lg-8 col-md-8 col-sm-10 col-xs-7">
-                        <input type="text" name="txtBreadNumber" class="form-control input-number" disabled value="0" min="0" max="100">
-                    </div>
-                    <div class="col-lg-2 col-md-2 col-sm-1 col-xs-2">
-                        <span class="input-group-btn">
-                            <button type="button" class="btn btn-success btn-number js-add-bread" data-type="plus" data-field="txtBreadNumber">
-                                <span class="glyphicon glyphicon-plus"></span>
-                            </button>
-                        </span>
-                    </div>
-                </div>
-
-                <h3>Milk</h3>
-                <div class="row">
-                    <div class="col-lg-2 col-md-2 col-sm-1 col-xs-2">
-                        <span class="input-group-btn">
-                            <button type="button" class="btn btn-danger btn-number js-remove-milk" data-type="minus" data-field="txtMilkNumber">
-                                <span class="glyphicon glyphicon-minus"></span>
-                            </button>
-                        </span>
-                    </div>
-                    <div class="col-lg-8 col-md-8 col-sm-10 col-xs-7">
-                        <input type="text" name="txtMilkNumber" class="form-control input-number" disabled value="0" min="0" max="100">
-                    </div>
-                    <div class="col-lg-2 col-md-2 col-sm-1 col-xs-2">
-                        <span class="input-group-btn">
-                            <button type="button" class="btn btn-success btn-number js-add-milk" data-type="plus" data-field="txtMilkNumber">
-                                <span class="glyphicon glyphicon-plus"></span>
-                            </button>
-                        </span>
-                    </div>
-                </div>
-            </div>
-        </div>
+        @Html.Partial("_BoxOrderForm")
     </div>
     <!--End Container box order form-->
     <!--Container box operations buttos-->
-    <div class="col-lg-4 col-md-2 col-sm-12" style="padding-bottom:20px;">
-        <div class="row">
-            <div class="col-lg-12">
-                <span class="input-group-btn">
-                    <button type="button" class="btn btn-primary btn-block js-process-order">
-                        do order
-                        <span class="glyphicon glyphicon-ok"></span>
-                    </button>
-                </span>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-12">
-                <span class="input-group-btn">
-                    <button type="button" class="btn btn-danger btn-block js-clear-order">
-                        clear order
-                        <span class="glyphicon glyphicon-remove"></span>
-                    </button>
-                </span>
-            </div>
-        </div>
+    <div class="col-lg-4 col-md-2 col-sm-12 box-buttons">
+        @Html.Partial("_BoxButtons")
     </div>
     <!--End Container box operations buttos-->
     <!--Container order box summary-->
     <div class="col-lg-4 col-md-4 col-sm-12">
-        <div class="panel panel-primary js-order-content">
-            <div class="panel-heading">
-                <h3 class="panel-title"><strong>Order summary</strong></h3>
-            </div>
-            <div class="alert alert-success js-content-offers" role="alert">
-
-            </div>
-            <div class="panel-body">
-                <div class="row">
-                    <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9"><strong>Final price</strong>:</div>
-                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 js-final-price">
-                        <span class="js-final-price">£0</span>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9"><strong>Original price</strong>:</div>
-                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 js-original-price">
-                        <span class="js-original-price">£0</span>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9"><strong>Saved money</strong>:</div>
-                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 js-saved-money">
-                        <strong><span class="js-saved-money">£0</span></strong>
-                    </div>
-                </div>
-            </div>
-        </div>
+        @Html.Partial("_BoxOrderSummary")
     </div>
     <!--End Container order box summary-->
 </div>

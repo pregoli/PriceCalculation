@@ -183,6 +183,7 @@ namespace BroadbandChoices.Web.Controllers
         /// This is updated every time a service do an operation
         /// to update the basket
         /// It is using the session ONLY because it is a test and any Db has been created
+        /// to store pending order
         /// </summary>
         public Basket CurrentBasket { get { return (Basket)Session["basketUpdated"]; } set { Session["basketUpdated"] = value; } }
     }

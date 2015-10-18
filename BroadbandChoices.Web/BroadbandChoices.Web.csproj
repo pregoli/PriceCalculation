@@ -211,6 +211,9 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Basket\Index.cshtml" />
+    <Content Include="Views\Basket\_BoxButtons.cshtml" />
+    <Content Include="Views\Basket\_BoxOrderForm.cshtml" />
+    <Content Include="Views\Basket\_BoxOrderSummary.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
