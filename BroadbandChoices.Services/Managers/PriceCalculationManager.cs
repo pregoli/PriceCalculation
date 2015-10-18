@@ -120,7 +120,7 @@ namespace BroadbandChoices.Services.Managers
             var totalMilks = milks.Count;
 
             milks.Where(x => x.FinalPrice == 0).ToList().ForEach(x => x.FinalPrice = x.UnitPrice);
-            if (totalMilks > OfferManager.MinimumForMilksOffer)
+            if (totalMilks >= OfferManager.MinimumForMilksOffer)
             {
                 var numberOfMilkForFree = totalMilks / OfferManager.MinimumForMilksOffer;
 

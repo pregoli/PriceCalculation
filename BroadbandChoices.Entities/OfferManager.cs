@@ -9,6 +9,6 @@ namespace BroadbandChoices.Entities
     public static class OfferManager
     {
         public static int MinimumForButtesOffer { get { return 2; } }
-        public static int MinimumForMilksOffer { get { return 3; } }
+        public static int MinimumForMilksOffer { get { return 4; } }
     }
 }
